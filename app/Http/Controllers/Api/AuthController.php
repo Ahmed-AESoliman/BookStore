@@ -96,4 +96,14 @@ class AuthController extends Controller implements HasMiddleware
     {
         return $this->authRepository->logout();
     }
+
+    /**
+     * Logout current device
+     * @return JsonResponse
+     */
+
+    public function authenticatedUser(Request $request): JsonResponse
+    {
+        return $this->authRepository->authenticatedUser($request);
+    }
 }

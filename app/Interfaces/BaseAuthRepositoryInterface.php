@@ -55,4 +55,10 @@ interface BaseAuthRepositoryInterface
      * @return JsonResponse
      */
     public function resend(string $email): JsonResponse;
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function authenticatedUser(Request $request): JsonResponse;
 }

@@ -63,11 +63,12 @@ class BaseAuthRepository implements BaseAuthRepositoryInterface
         $user = Auth::user();
         if (Hash::check($data['password'], $user->password)) {
             $user->update([
-                'first_name' => $data['first_name'],
+                'name' => $data['name'],
                 'email' => $data['email'],
-                'last_name' => $data['last_name'],
                 'password' => isset($data['new_password']) ? Hash::make($data['new_password']) : $user->password,
                 'mobile_number' => $data['mobile'],
+                'city' => $data['city'],
+                'town' => $data['town'],
                 'avatar' => $data['avatar'] ?? $user->avatar,
             ]);
             return response()->json(new AuthenticatedUserResource(Auth::user(), null), 201);
@@ -144,5 +145,18 @@ class BaseAuthRepository implements BaseAuthRepositoryInterface
     {
         Auth::user()->currentAccessToken()->delete();
         return ApiResponse::success(null);
+    }
+
+    /**
+     * Authenticated User
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function authenticatedUser(Request $request): JsonResponse
+    {
+        $user = Auth::user();
+        return ApiResponse::success(
+            new AuthenticatedUserResource($user, null)
+        );
     }
 }

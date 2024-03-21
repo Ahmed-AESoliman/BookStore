@@ -32,6 +32,8 @@ class AuthenticatedUserResource extends JsonResource
             'email' => $this->email,
             'mobile_number' => $this->mobile_number,
             'avatar' => $this->avatar,
+            'city' => $this->city,
+            'town' => $this->town,
         ];
         if ($this->token) {
             $data['access_token'] = $this->token;

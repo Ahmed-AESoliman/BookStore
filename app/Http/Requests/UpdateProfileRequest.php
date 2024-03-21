@@ -11,7 +11,7 @@ class UpdateProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,12 +23,13 @@ class UpdateProfileRequest extends FormRequest
     {
         $id = auth()->user()->id;
         return [
-            'first_name' => 'required|string',
-            'last_name' => 'required|string',
+            'name' => 'required|string',
             'email' => 'required|email|max:255|unique:users' . ',email,' . $id,
             'mobile' => 'required|string|min:11|max:13|unique:users' . ',mobile_number,' . $id,
             'avatar' => 'nullable|string',
             'password' => 'required|min:8|confirmed',
+            'city' => 'required|string|max:255',
+            'town' => 'required|string|max:255',
         ];
     }
 }
