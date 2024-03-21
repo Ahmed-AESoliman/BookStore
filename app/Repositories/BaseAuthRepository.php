@@ -30,7 +30,7 @@ class BaseAuthRepository implements BaseAuthRepositoryInterface
     {
         $user = User::where(['email' => $credentials['email'], 'is_active' => true])->first();
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
-            return ApiResponse::error(__('messages.error.incorrectCredentials'));
+            return ApiResponse::error('incorrect Credentials');
         }
         return ApiResponse::success(
             new AuthenticatedUserResource($user, $user->createToken('access-token')->plainTextToken)
@@ -44,10 +44,10 @@ class BaseAuthRepository implements BaseAuthRepositoryInterface
      */
     public function register($data): JsonResponse
     {
-        $data['password'] = 'E-Commerce App';
+        $data['password'] = Hash::make($data['password']);
         $user = User::create($data);
         if (!empty($user)) {
-            dispatch(new SendEmailJob($data['email']));
+            // dispatch(new SendEmailJob($data['email']));
             return ApiResponse::success("Operation Done");
         }
         return ApiResponse::error();
@@ -95,7 +95,7 @@ class BaseAuthRepository implements BaseAuthRepositoryInterface
         );
 
         if ($status == Password::PASSWORD_RESET) {
-            return response()->json(['message' => __($status)], 200);
+            return response()->json(['message' => $status], 200);
         } else {
             throw ValidationException::withMessages([
                 'email' => $status

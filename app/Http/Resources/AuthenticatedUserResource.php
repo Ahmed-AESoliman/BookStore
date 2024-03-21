@@ -28,8 +28,7 @@ class AuthenticatedUserResource extends JsonResource
     {
         $data = [
             'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+            'name' => $this->name,
             'email' => $this->email,
             'mobile_number' => $this->mobile_number,
             'avatar' => $this->avatar,
