@@ -23,6 +23,13 @@ Route::group(
             Route::get('/educational-categories', 'CategoryController@educationalCategories');
             Route::get('/educational-sub-categories', 'CategoryController@educationalSubCategories');
             Route::get('/educational-subjects', 'CategoryController@educationalSubjects');
+
+            Route::get('/book', 'BookController@index');
+            Route::get('/book/{book}', 'BookController@show');
+            Route::post('/book/upload-attachment', 'BookController@uploadAttachments');
+            Route::delete('/book/delete-attachment', 'BookController@deleteAttachment');
+            Route::post('/book/store', 'BookController@store');
+            Route::put('/book/update/{book}', 'BookController@update');
         });
     }
 );
