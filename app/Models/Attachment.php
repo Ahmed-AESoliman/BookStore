@@ -18,4 +18,9 @@ class Attachment extends Model
     {
         return $this->morphTo();
     }
+
+    public function getFilePathAttribute($value)
+    {
+        return Storage::url($value);
+    }
 }
