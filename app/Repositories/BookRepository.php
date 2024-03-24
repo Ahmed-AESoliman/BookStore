@@ -24,7 +24,7 @@ class BookRepository implements BookRepositoryInterface
 
     public function index(Request $request): BookCollection
     {
-        return new BookCollection($this->model->filter($request)->paginate($request->input('page_size')));
+        return new BookCollection($this->model->filter($request)->where('owner_id', '!=', auth()->user()->id)->paginate($request->input('page_size')));
     }
 
     public function store(array $data): JsonResponse
@@ -98,5 +98,10 @@ class BookRepository implements BookRepositoryInterface
             return ApiResponse::success(null, 'success deleted');
         }
         return ApiResponse::error('somthing wrong try again');
+    }
+
+    public function getBooksToAuthUser(Request $request): BookCollection
+    {
+        return new BookCollection($this->model->filter($request)->where('owner_id', '=', auth()->user()->id)->paginate($request->input('page_size')));
     }
 }

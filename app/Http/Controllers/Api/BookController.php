@@ -80,4 +80,15 @@ class BookController extends Controller
         ]);
         return $this->bookRepository->deleteAttachment($request->input('path'));
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  Request|BookFilterRequest  $request
+     * @return BookCollection
+     */
+    public function getBooksToAuthUser(BookFilterRequest $request): BookCollection
+    {
+        return $this->bookRepository->getBooksToAuthUser($request);
+    }
 }

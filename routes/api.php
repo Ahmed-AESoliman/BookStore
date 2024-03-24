@@ -25,6 +25,7 @@ Route::group(
             Route::get('/educational-subjects', 'CategoryController@educationalSubjects');
 
             Route::get('/book', 'BookController@index');
+            Route::get('/book/my-ads', 'BookController@getBooksToAuthUser');
             Route::get('/book/{book}', 'BookController@show');
             Route::post('/book/upload-attachment', 'BookController@uploadAttachments');
             Route::delete('/book/delete-attachment', 'BookController@deleteAttachment');
