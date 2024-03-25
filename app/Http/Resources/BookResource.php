@@ -24,7 +24,14 @@ class BookResource extends JsonResource
             'exchangable' => $this->exchangable,
             'negationable' => $this->negationable,
             'state' => $this->state,
-            'image' => $this->attachments->first()?->file_path,
+            'owner' => [
+                'name' => $this->owner->name,
+                'phone' => $this->owner->mobile_number,
+            ],
+            'category' => $this->category?->name,
+            'sub_category' => $this->subCategory?->name,
+            'subject' => $this->subject?->name,
+            'image' => $this->attachments->pluck('file_path')->toArray()
         ];
     }
 }
