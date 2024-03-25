@@ -15,42 +15,42 @@ class SubCategorySeed extends Seeder
     public function run(): void
     {
         $government = Category::where([
-            ['name', '=', 'government'],
+            ['name', '=', 'عام'],
             ['is_educational', '=', true]
         ])->first();
         SubCategory::create([
-            'name' => 'Primary education',
+            'name' => 'الصف الاول الابتدائي',
             'category_id' => $government->id
         ]);
 
         SubCategory::create([
-            'name' => 'Secondary education',
+            'name' => 'الصف الثاني الابتدائي',
             'category_id' => $government->id
         ]);
 
         SubCategory::create([
-            'name' => 'General secondary education',
+            'name' => 'الصف الثالث الابتدائي',
             'category_id' => $government->id
         ]);
 
-        $azhary = Category::where([
-            ['name', '=', 'azhary'],
-            ['is_educational', '=', true]
-        ])->first();
+        // $azhary = Category::where([
+        //     ['name', '=', 'azhary'],
+        //     ['is_educational', '=', true]
+        // ])->first();
 
-        SubCategory::create([
-            'name' => 'Primary education',
-            'category_id' => $azhary->id
-        ]);
+        // SubCategory::create([
+        //     'name' => 'Primary education',
+        //     'category_id' => $azhary->id
+        // ]);
 
-        SubCategory::create([
-            'name' => 'Secondary education',
-            'category_id' => $azhary->id
-        ]);
+        // SubCategory::create([
+        //     'name' => 'Secondary education',
+        //     'category_id' => $azhary->id
+        // ]);
 
-        SubCategory::create([
-            'name' => 'Secondary education azhary',
-            'category_id' => $azhary->id
-        ]);
+        // SubCategory::create([
+        //     'name' => 'Secondary education azhary',
+        //     'category_id' => $azhary->id
+        // ]);
     }
 }

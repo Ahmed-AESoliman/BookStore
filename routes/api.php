@@ -18,12 +18,10 @@ Route::group(
             Route::delete('/logout', 'AuthController@logout');
             Route::put('/update-authenticated-user', 'AuthController@update');
             Route::get('/authenticated-user', 'AuthController@authenticatedUser');
-
             Route::get('/general-categories', 'CategoryController@generalCategories');
             Route::get('/educational-categories', 'CategoryController@educationalCategories');
             Route::get('/educational-sub-categories', 'CategoryController@educationalSubCategories');
             Route::get('/educational-subjects', 'CategoryController@educationalSubjects');
-
             Route::get('/book', 'BookController@index');
             Route::get('/book/my-ads', 'BookController@getBooksToAuthUser');
             Route::get('/book/{book}', 'BookController@show');

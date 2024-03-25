@@ -83,13 +83,13 @@ class CategorySeed extends Seeder
         /// educational categories
 
         Category::create([
-            'name' => 'government',
+            'name' => 'عام',
             'is_educational' => true
         ]);
 
-        Category::create([
-            'name' => 'azhary',
-            'is_educational' => true
-        ]);
+        // Category::create([
+        //     'name' => 'azhary',
+        //     'is_educational' => true
+        // ]);
     }
 }
