@@ -34,7 +34,7 @@ return new class extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories');
             $table->foreign('subject_id')->references('id')->on('subjects');
-            $table->foreign('owner_id')->references('id')->on('Users');
+            $table->foreign('owner_id')->references('id')->on('users');
         });
     }
 
