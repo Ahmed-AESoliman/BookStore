@@ -27,7 +27,7 @@ class UpdateProfileRequest extends FormRequest
             'email' => 'required|email|max:255|unique:users' . ',email,' . $id,
             'mobile' => 'required|string|min:11|max:13|unique:users' . ',mobile_number,' . $id,
             'avatar' => 'nullable|string',
-            'password' => 'required|min:8|confirmed',
+            // 'password' => 'required|min:8|confirmed',
             'city' => 'required|string|max:255',
             'town' => 'required|string|max:255',
         ];

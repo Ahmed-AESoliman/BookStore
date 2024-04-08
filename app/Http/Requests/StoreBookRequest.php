@@ -29,7 +29,7 @@ class StoreBookRequest extends FormRequest
             'price' => 'required|decimal:1,2',
             'exchangable' => 'required|boolean',
             'negationable' => 'required|boolean',
-            'state' => 'required|boolean',
+            'state' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
             'sub_category_id' => 'sometimes|nullable|exists:sub_categories,id',
             'subject_id' => 'sometimes|nullable|exists:subjects,id',

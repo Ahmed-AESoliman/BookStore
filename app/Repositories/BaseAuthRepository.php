@@ -61,20 +61,20 @@ class BaseAuthRepository implements BaseAuthRepositoryInterface
     public function update($data): JsonResponse
     {
         $user = Auth::user();
-        if (Hash::check($data['password'], $user->password)) {
-            $user->update([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => isset($data['new_password']) ? Hash::make($data['new_password']) : $user->password,
-                'mobile_number' => $data['mobile'],
-                'city' => $data['city'],
-                'town' => $data['town'],
-                'avatar' => $data['avatar'] ?? $user->avatar,
-            ]);
-            return response()->json(new AuthenticatedUserResource(Auth::user(), null), 201);
-        } else {
-            return response()->json(['error' => 'Old password does not match'], 400);
-        }
+        // if (Hash::check($data['password'], $user->password)) {
+        $user->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            // 'password' => isset($data['new_password']) ? Hash::make($data['new_password']) : $user->password,
+            'mobile_number' => $data['mobile'],
+            'city' => $data['city'],
+            'town' => $data['town'],
+            'avatar' => $data['avatar'] ?? $user->avatar,
+        ]);
+        return response()->json(new AuthenticatedUserResource(Auth::user(), null), 201);
+        // } else {
+        //     return response()->json(['error' => 'Old password does not match'], 400);
+        // }
     }
 
     /**

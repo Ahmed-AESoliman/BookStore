@@ -29,6 +29,12 @@ Route::group(
             Route::delete('/book/delete-attachment', 'BookController@deleteAttachment');
             Route::post('/book/store', 'BookController@store');
             Route::put('/book/update/{book}', 'BookController@update');
+
+            Route::post('/chat/create-chat-room/{book}', 'ChatController@createChatRoom');
+            Route::post('/chat/send-message/{room}', 'ChatController@sendMessage');
+            Route::get('/chat/rooms', 'ChatController@getChatRooms');
+            Route::get('/chat/rooms/{room}', 'ChatController@getChatRoom');
+            Route::get('/chat/rooms/{room}/messages', 'ChatController@getChatRoomMessages');
         });
     }
 );
