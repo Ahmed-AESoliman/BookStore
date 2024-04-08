@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('seller_id')->nullable();
             $table->unsignedBigInteger('room_id');
             $table->timestamps();
-            $table->foreign('buyer_id')->references('id')->on('Users');
-            $table->foreign('seller_id')->references('id')->on('Users');
+            $table->foreign('buyer_id')->references('id')->on('users');
+            $table->foreign('seller_id')->references('id')->on('users');
             $table->foreign('room_id')->references('id')->on('chat_rooms');
         });
     }
