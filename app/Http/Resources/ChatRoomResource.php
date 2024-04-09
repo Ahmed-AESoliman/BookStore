@@ -18,7 +18,8 @@ class ChatRoomResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $name,
-            'book' => new SingleBookResource($this->book)
+            'book' => new SingleBookResource($this->book),
+            'messages' => ChatRoomMessageResource::collection($this->messages)
         ];
     }
 }

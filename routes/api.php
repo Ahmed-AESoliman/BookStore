@@ -34,7 +34,7 @@ Route::group(
             Route::post('/chat/send-message/{room}', 'ChatController@sendMessage');
             Route::get('/chat/rooms', 'ChatController@getChatRooms');
             Route::get('/chat/rooms/{room}', 'ChatController@getChatRoom');
-            Route::get('/chat/rooms/{room}/messages', 'ChatController@getChatRoomMessages');
+            // Route::get('/chat/rooms/{room}/messages', 'ChatController@getChatRoomMessages');
         });
     }
 );
