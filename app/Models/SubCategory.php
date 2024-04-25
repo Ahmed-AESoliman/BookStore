@@ -19,8 +19,8 @@ class SubCategory extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function subjects()
-    {
-        return $this->hasMany(Subject::class, 'sub_category_id');
-    }
+    // public function subjects()
+    // {
+    //     return $this->hasMany(Subject::class, 'sub_category_id');
+    // }
 }

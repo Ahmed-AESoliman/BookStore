@@ -26,7 +26,7 @@ class Book extends Model
         'owner_id',
         'category_id',
         'sub_category_id',
-        'subject_id',
+        // 'subject_id',
     ];
     /**
      * Get the owner of the model.
@@ -63,10 +63,10 @@ class Book extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function subject()
-    {
-        return $this->belongsTo(Subject::class, 'subject_id');
-    }
+    // public function subject()
+    // {
+    //     return $this->belongsTo(Subject::class, 'subject_id');
+    // }
 
     /**
      * Get all of the attachments for the model.

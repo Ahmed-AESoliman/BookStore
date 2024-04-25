@@ -91,4 +91,8 @@ class BookController extends Controller
     {
         return $this->bookRepository->getBooksToAuthUser($request);
     }
+
+    public function delete(Book $book):JsonResponse{
+        return $this->bookRepository->delete($book);
+    }
 }

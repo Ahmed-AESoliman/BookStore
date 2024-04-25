@@ -27,13 +27,13 @@ return new class extends Migration
             $table->unsignedBigInteger('owner_id');
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('sub_category_id')->nullable();
-            $table->unsignedBigInteger('subject_id')->nullable();
+            // $table->unsignedBigInteger('subject_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('sub_category_id')->references('id')->on('sub_categories');
-            $table->foreign('subject_id')->references('id')->on('subjects');
+            // $table->foreign('subject_id')->references('id')->on('subjects');
             $table->foreign('owner_id')->references('id')->on('users');
         });
     }

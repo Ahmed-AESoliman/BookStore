@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subjects', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('sub_category_id');
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories');
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        // Schema::create('subjects', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->unsignedBigInteger('sub_category_id');
+        //     $table->foreign('sub_category_id')->references('id')->on('sub_categories');
+        //     $table->timestamps();
+        //     $table->softDeletes();
+        // });
     }
 
     /**

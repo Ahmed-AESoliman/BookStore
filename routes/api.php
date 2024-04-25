@@ -29,6 +29,7 @@ Route::group(
             Route::delete('/book/delete-attachment', 'BookController@deleteAttachment');
             Route::post('/book/store', 'BookController@store');
             Route::put('/book/update/{book}', 'BookController@update');
+            Route::delete('/book/delete/{book}', 'BookController@delete');
 
             Route::post('/chat/create-chat-room/{book}', 'ChatController@createChatRoom');
             Route::post('/chat/send-message/{room}', 'ChatController@sendMessage');
