@@ -43,8 +43,8 @@ class ChatRepository implements ChatRepositoryInterface
             $data = [
                 'content' => $content,
                 'room_id' => $room->id,
-                'seller_id' => $room->book->owner_id,
-                'buyer_id' => $room->buyer_id,
+                // 'seller_id' => $room->book->owner_id,
+                // 'buyer_id' => $room->buyer_id,
             ];
             Message::create($data);
             $room->update(['status' => true]);
@@ -57,15 +57,21 @@ class ChatRepository implements ChatRepositoryInterface
     {
         $user = auth()->user();
         $rooms = ChatRoom::where('buyer_id', $user->id)
+
             ->orWhereHas('book', function ($query) use ($user) {
                 $query->where('owner_id', $user->id);
             })->where('status', true)
+            ->with(['book'=>function ($q){
+                $q->withTrashed();
+            }])
             ->paginate($request->input('page_size'));
+            // dd($rooms);
         return new ChatRoomCollection($rooms);
     }
     public function getChatRoom(ChatRoom $room): JsonResponse
     {
         $user = auth()->user();
+
         if ($user->id !== $room->book->owner_id && $user->id !== $room->buyer_id) {
             return ApiResponse::error("You are not authorized to enter in this chat room");
         }

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->unsignedBigInteger('book_id');
             $table->boolean('status')->default(false);
             $table->timestamps();
-            $table->foreign('buyer_id')->references('id')->on('users');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('buyer_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('book_id')->references('id')->on('books')->cascadeOnDelete();
         });
     }
 

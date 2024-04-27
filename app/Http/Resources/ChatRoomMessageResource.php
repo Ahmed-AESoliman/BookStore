@@ -16,8 +16,8 @@ class ChatRoomMessageResource extends JsonResource
     {
         return [
             "content" => $this->content,
-            "buyer_id" => $this->buyer_id,
-            "seller_id" => $this->seller_id,
+            "buyer_id" => $this->room->buyer_id,
+            "seller_id" => $this->room->book->owner_id,
             "time" => $this->created_at->format('d M Y h:i a'),
         ];
     }

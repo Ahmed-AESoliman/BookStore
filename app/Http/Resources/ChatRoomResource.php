@@ -14,7 +14,7 @@ class ChatRoomResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $name = auth()->user()->id == $this->buyer_id ? $this->book->owner?->name : $this->buyer?->name;
+        $name = auth()->user()->id == $this->buyer_id ? $this->book->owner->name : $this->buyer->name;
         return [
             'id' => $this->id,
             'name' => $name,
