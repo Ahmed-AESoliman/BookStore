@@ -26,7 +26,7 @@ class UpdateBookRequest extends FormRequest
             'description' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'town' => 'required|string|max:255',
-            'price' => 'required|decimal:1,2',
+            'price' => 'required',
             'exchangable' => 'required|boolean',
             'negationable' => 'required|boolean',
             'state' => 'required|boolean',

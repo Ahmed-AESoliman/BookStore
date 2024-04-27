@@ -33,6 +33,48 @@ class SubCategorySeed extends Seeder
             'category_id' => $government->id
         ]);
 
+        SubCategory::create([
+            'name' => 'الصف الرابع الابتدائي',
+            'category_id' => $government->id
+        ]);
+        SubCategory::create([
+            'name' => 'الصف الخامس الابتدائي',
+            'category_id' => $government->id
+        ]);
+
+        SubCategory::create([
+            'name' => 'الصف السادس الابتدائي',
+            'category_id' => $government->id
+        ]);
+        SubCategory::create([
+            'name' => 'الصف الاول الاعدادي',
+            'category_id' => $government->id
+        ]);
+
+        SubCategory::create([
+            'name' => 'الصف الثاني الاعدادي',
+            'category_id' => $government->id
+        ]);
+
+        SubCategory::create([
+            'name' => 'الصف الثالث الاعدادي',
+            'category_id' => $government->id
+        ]);
+
+        SubCategory::create([
+            'name' => 'الصف الاول الثانوي',
+            'category_id' => $government->id
+        ]);
+
+        SubCategory::create([
+            'name' => 'الصف الثاني الثانوي',
+            'category_id' => $government->id
+        ]);
+
+        SubCategory::create([
+            'name' => 'الصف الثالث الثانوي',
+            'category_id' => $government->id
+        ]);
         // $azhary = Category::where([
         //     ['name', '=', 'azhary'],
         //     ['is_educational', '=', true]

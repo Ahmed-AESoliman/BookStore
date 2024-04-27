@@ -69,8 +69,12 @@ class BookRepository implements BookRepositoryInterface
 
     public function delete(Model $model): JsonResponse
     {
-        $model->delete();
-        return ApiResponse::success(null, 'success deleted');
+        if($model->owner_id==auth()->user()->id){
+            $model->delete();
+            return ApiResponse::success(null, 'success deleted');
+        }
+        return ApiResponse::error( 'not Found Book');
+
     }
 
     public function restore(Model $model): bool
