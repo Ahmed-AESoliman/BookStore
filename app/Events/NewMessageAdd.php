@@ -49,7 +49,7 @@ class NewMessageAdd implements ShouldBroadcastNow
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('chat.' .$this->chatMessage->room_id),
+            new Channel('chat.' .$this->chatMessage->room_id),
         ];
     }
 }
