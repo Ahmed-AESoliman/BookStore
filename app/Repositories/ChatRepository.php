@@ -44,7 +44,7 @@ class ChatRepository implements ChatRepositoryInterface
             $data = [
                 'content' => $content,
                 'room_id' => $room->id,
-                // 'seller_id' => $room->book->owner_id,
+                'sender_id' => $user->id,
                 // 'buyer_id' => $room->buyer_id,
             ];
            $message= Message::create($data);
