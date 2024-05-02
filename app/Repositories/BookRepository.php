@@ -46,15 +46,6 @@ class BookRepository implements BookRepositoryInterface
     public function update(array $data, Model $model): JsonResponse
     {
         try {
-            if (isset($data['attachments'])) {
-                $oldAttachments = $model->attachments;
-                foreach ($oldAttachments as $attachment) {
-                    $attachment->delete();
-                }
-                foreach ($data['attachments'] as $attachment) {
-                    $model->attachments()->create(['file_path' => $attachment]);
-                }
-            }
             $model->update($data);
             return ApiResponse::success(null, 'success updated', 200);
         } catch (\Exception $e) {
@@ -69,12 +60,11 @@ class BookRepository implements BookRepositoryInterface
 
     public function delete(Model $model): JsonResponse
     {
-        if($model->owner_id==auth()->user()->id){
+        if ($model->owner_id == auth()->user()->id) {
             $model->delete();
             return ApiResponse::success(null, 'success deleted');
         }
-        return ApiResponse::error( 'not Found Book');
-
+        return ApiResponse::error('not Found Book');
     }
 
     public function restore(Model $model): bool
@@ -107,5 +97,34 @@ class BookRepository implements BookRepositoryInterface
     public function getBooksToAuthUser(Request $request): BookCollection
     {
         return new BookCollection($this->model->filter($request)->where('owner_id', '=', auth()->user()->id)->paginate($request->input('page_size')));
+    }
+
+    public function addBookToFavorite(Book $book): JsonResponse
+    {
+        $user = auth()->user();
+        if ($book->owner_id !== $user->id) {
+            if ($user->favoritBooks()->where('id', $book->id)->exists()) {
+                return ApiResponse::success(null, 'book already added');
+            }
+            $user->favoritBooks()->attach($book);
+            return ApiResponse::success(null, 'book added success');
+        }
+        return ApiResponse::error('not Found Book');
+    }
+
+    public function deleteBookToFavorite(Book $book): JsonResponse
+    {
+        $user = auth()->user();
+        if ($book->owner_id !== $user->id) {
+            $user->favoritBooks()->detach($book);
+            return ApiResponse::success(null, 'book deleted success');
+        }
+        return ApiResponse::error('not Found Book');
+    }
+
+    public function favoriteBooks(Request $request): BookCollection
+    {
+        $user = auth()->user();
+        return new BookCollection($user->favoritBooks()->filter($request)->paginate($request->input('page_size')));
     }
 }

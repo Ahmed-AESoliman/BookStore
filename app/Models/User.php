@@ -62,4 +62,9 @@ class User extends Authenticatable
         $url = env('APP_URL') . '/create-password?token=' . $token . '&' . 'email=' . $this->email;
         $this->notify(new CreatePasswordNotification($url));
     }
+
+    public function favoritBooks()
+    {
+        return $this->belongsToMany(Book::class, 'favorits_books', 'user_id', 'book_id', 'id', 'id');
+    }
 }

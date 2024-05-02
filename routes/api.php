@@ -32,6 +32,9 @@ Route::group(
             Route::post('/book/store', 'BookController@store');
             Route::put('/book/update/{book}', 'BookController@update');
             Route::delete('/book/delete/{book}', 'BookController@delete');
+            Route::get('/favorite-books', 'BookController@favoriteBooks');
+            Route::post('/book/add-to-favorite/{book}', 'BookController@addBookToFavorite');
+            Route::delete('/book/delete-from-favorite/{book}', 'BookController@deleteBookToFavorite');
 
             Route::post('/chat/create-chat-room/{book}', 'ChatController@createChatRoom');
             Route::post('/chat/send-message/{room}', 'ChatController@sendMessage');

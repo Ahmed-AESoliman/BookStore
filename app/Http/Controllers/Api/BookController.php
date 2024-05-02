@@ -92,7 +92,24 @@ class BookController extends Controller
         return $this->bookRepository->getBooksToAuthUser($request);
     }
 
-    public function delete(Book $book):JsonResponse{
+    public function delete(Book $book): JsonResponse
+    {
         return $this->bookRepository->delete($book);
+    }
+
+    public function addBookToFavorite(Book $book): JsonResponse
+    {
+        return $this->bookRepository->addBookToFavorite($book);
+    }
+
+    public function deleteBookToFavorite(Book $book): JsonResponse
+    {
+        return $this->bookRepository->deleteBookToFavorite($book);
+    }
+
+    public function favoriteBooks(BookFilterRequest $request): BookCollection
+    {
+
+        return $this->bookRepository->favoriteBooks($request);
     }
 }

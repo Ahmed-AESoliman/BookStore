@@ -27,13 +27,6 @@ class UpdateBookRequest extends FormRequest
             'city' => 'required|string|max:255',
             'town' => 'required|string|max:255',
             'price' => 'required',
-            'exchangable' => 'required|boolean',
-            'negationable' => 'required|boolean',
-            'state' => 'required|boolean',
-            'category_id' => 'required|exists:categories,id',
-            'sub_category_id' => 'sometimes|nullable|exists:sub_categories,id',
-            'subject_id' => 'sometimes|nullable|exists:subjects,id',
-            'attachments' => 'required|array|min:1|max:4',
         ];
     }
 }
