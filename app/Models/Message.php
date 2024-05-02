@@ -16,10 +16,10 @@ class Message extends Model
         'content'
     ];
 
-    // public function buyer(): BelongsTo
-    // {
-    //     return $this->belongsTo(User::class, 'buyer_id');
-    // }
+    public function sender(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'sender_id');
+    }
     // public function seller(): BelongsTo
     // {
     //     return $this->belongsTo(User::class, 'seller_id');
