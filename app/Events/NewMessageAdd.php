@@ -2,6 +2,7 @@
 
 namespace App\Events;
 
+use App\Http\Resources\ChatRoomMessageResource;
 use App\Models\Message;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
@@ -34,12 +35,9 @@ class NewMessageAdd implements ShouldBroadcastNow
         return 'message.sent';
     }
 
-    public function broadcastWith(): array
+    public function broadcastWith(): ChatRoomMessageResource
     {
-        return [
-            'chat_id' => $this->chatMessage->room_id,
-            'message' => $this->chatMessage->content,
-        ];
+        return new ChatRoomMessageResource($this->chatMessage);
     }
     /**
      * Get the channels the event should broadcast on.
