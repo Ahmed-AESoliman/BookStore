@@ -35,9 +35,13 @@ class NewMessageAdd implements ShouldBroadcastNow
         return 'message.sent';
     }
 
-    public function broadcastWith(): ChatRoomMessageResource
+    public function broadcastWith(): array
     {
-        return new ChatRoomMessageResource($this->chatMessage);
+        return [
+            "content" => $this->chatMessage->content,
+            "sender_id" => $this->chatMessage->sender_id,
+            "time" => $this->chatMessage->created_at->format('d M Y h:i a'),
+        ];
     }
     /**
      * Get the channels the event should broadcast on.
