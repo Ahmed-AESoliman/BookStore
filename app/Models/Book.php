@@ -111,12 +111,12 @@ class Book extends Model
 
         // Filter by category ID
         if ($request->filled('category')) {
-            $query->whereIn('category_id', $request->input('category'));
+            $query->where('category_id', $request->input('category'));
         }
 
         // Filter by sub-category ID
         if ($request->filled('sub_category')) {
-            $query->whereIn('sub_category_id', $request->input('sub_category'));
+            $query->where('sub_category_id', $request->input('sub_category'));
         }
 
         // Filter by subject ID
