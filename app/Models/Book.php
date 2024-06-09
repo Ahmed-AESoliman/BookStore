@@ -25,7 +25,7 @@ class Book extends Model
         'quantity',
         'owner_id',
         'category_id',
-        'sub_category_id',
+        // 'sub_category_id',
         // 'subject_id',
     ];
     /**
@@ -53,10 +53,10 @@ class Book extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function subCategory()
-    {
-        return $this->belongsTo(SubCategory::class, 'sub_category_id');
-    }
+    // public function subCategory()
+    // {
+    //     return $this->belongsTo(SubCategory::class, 'sub_category_id');
+    // }
 
     /**
      * Get the subject associated with the model.
@@ -90,12 +90,12 @@ class Book extends Model
 
         // Filter by city
         if ($request->filled('city')) {
-            $query->where('city', $request->input('city'));
+            $query->where('city', 'like', '%' . $request->input('city') . '%');
         }
 
         // Filter by town
         if ($request->filled('town')) {
-            $query->where('town', $request->input('town'));
+            $query->where('town', 'like', '%' . $request->input('town') . '%');
         }
 
         // Filter by title (using partial match)
@@ -115,27 +115,30 @@ class Book extends Model
         }
 
         // Filter by sub-category ID
-        if ($request->filled('sub_category')) {
-            $query->where('sub_category_id', $request->input('sub_category'));
-        }
+        // if ($request->filled('sub_category')) {
+        //     $query->where('sub_category_id', $request->input('sub_category'));
+        // }
 
         // Filter by subject ID
-        if ($request->filled('subject')) {
-            $query->whereIn('subject_id', $request->input('subject_id'));
-        }
+        // if ($request->filled('subject')) {
+        //     $query->whereIn('subject_id', $request->input('subject_id'));
+        // }
         // Filter by authenticated user area
         if ($request->filled('authenticatedUserArea') && $request->input('authenticatedUserArea') == true) {
             $user = auth()->user();
-            $query->where('city', $user->city)->where('town', $user->town);
+            $query->where('city', 'like', '%' . $user->city . '%')->where('town', 'like', '%' . $user->town . '%');
         }
 
         // Filter by educational records
         if ($request->filled('is_educational')) {
             $isEducational = $request->input('is_educational');
             if ($isEducational == 2) {
-                $query->whereNotNull('sub_category_id')->orWhereNotNull('subject_id');
+                $educationalCategories = Category::where("is_educational", true)->get()->pluck('id');
+                // dd($educationalCategories);
+                $query->whereIn('category_id', $educationalCategories);
             } else {
-                $query->whereNull('sub_category_id')->whereNull('subject_id');
+                $generalCategories = Category::where("is_educational", false)->get()->pluck('id');
+                $query->whereIn('category_id', $generalCategories);
             }
         }
 

@@ -83,13 +83,61 @@ class CategorySeed extends Seeder
         /// educational categories
 
         Category::create([
-            'name' => 'عام',
+            'name' => 'الصف الاول الابتدائي',
             'is_educational' => true
         ]);
 
-        // Category::create([
-        //     'name' => 'azhary',
-        //     'is_educational' => true
-        // ]);
+        Category::create([
+            'name' => 'الصف الثاني الابتدائي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الثالث الابتدائي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الرابع الابتدائي',
+            'is_educational' => true
+        ]);
+        Category::create([
+            'name' => 'الصف الخامس الابتدائي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف السادس الابتدائي',
+            'is_educational' => true
+        ]);
+        Category::create([
+            'name' => 'الصف الاول الاعدادي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الثاني الاعدادي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الثالث الاعدادي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الاول الثانوي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الثاني الثانوي',
+            'is_educational' => true
+        ]);
+
+        Category::create([
+            'name' => 'الصف الثالث الثانوي',
+            'is_educational' => true
+        ]);
     }
 }

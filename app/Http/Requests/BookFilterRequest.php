@@ -30,10 +30,10 @@ class BookFilterRequest extends FormRequest
             "state" => "sometimes|boolean|nullable",
             "category" => "sometimes|nullable|exists:categories,id",
             // "category.*" => "exists:categories,id",
-            "sub_category" => "sometimes|nullable|exists:sub_categories,id",
+            // "sub_category" => "sometimes|nullable|exists:sub_categories,id",
             // "sub_category.*" => "exists:sub_categories,id",
-            "subject" => "sometimes|nullable|array",
-            "subject.*" => "exists:subjects,id",
+            // "subject" => "sometimes|nullable|array",
+            // "subject.*" => "exists:subjects,id",
             "is_educational" => "sometimes|nullable|in:1,2",
             'authenticatedUserArea' => "sometimes|nullable|boolean"
         ];

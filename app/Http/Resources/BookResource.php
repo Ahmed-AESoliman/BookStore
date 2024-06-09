@@ -29,8 +29,8 @@ class BookResource extends JsonResource
                 'phone' => $this->owner->mobile_number,
             ],
             'category' => $this->category?->name,
-            'sub_category' => $this->subCategory?->name,
-            'subject' => $this->subject?->name,
+            // 'sub_category' => $this->subCategory?->name,
+            // 'subject' => $this->subject?->name,
             'image' => $this->attachments->pluck('file_path')->toArray()
         ];
     }

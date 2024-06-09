@@ -25,15 +25,15 @@ class CategoryRepository implements CategoryRepositoryInterface
         return ApiResponse::success($categories);
     }
 
-    public function educationalSubCategories(Request $request): JsonResponse
-    {
-        $categories = SubCategory::select('name', 'id')->where('category_id', $request->category_id)->get();
-        return ApiResponse::success($categories);
-    }
+    // public function educationalSubCategories(Request $request): JsonResponse
+    // {
+    //     $categories = SubCategory::select('name', 'id')->where('category_id', $request->category_id)->get();
+    //     return ApiResponse::success($categories);
+    // }
 
-    public function educationalSubjects(Request $request): JsonResponse
-    {
-        $subjects = Subject::select('name', 'id')->where('sub_category_id', $request->sub_category_id)->get();
-        return ApiResponse::success($subjects);
-    }
+    // public function educationalSubjects(Request $request): JsonResponse
+    // {
+    //     $subjects = Subject::select('name', 'id')->where('sub_category_id', $request->sub_category_id)->get();
+    //     return ApiResponse::success($subjects);
+    // }
 }

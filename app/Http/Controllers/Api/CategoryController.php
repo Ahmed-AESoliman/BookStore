@@ -41,20 +41,20 @@ class CategoryController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
-    public function educationalSubCategories(Request $request): JsonResponse
-    {
-        $request->validate(['category_id' => 'required|exists:categories,id']);
-        return $this->categoryRepository->educationalSubCategories($request);
-    }
+    // public function educationalSubCategories(Request $request): JsonResponse
+    // {
+    //     $request->validate(['category_id' => 'required|exists:categories,id']);
+    //     return $this->categoryRepository->educationalSubCategories($request);
+    // }
 
     /**
      * @param Request $request
      * @return JsonResponse
      */
-    public function educationalSubjects(Request $request): JsonResponse
-    {
-        $request->validate(['sub_category_id' => 'required|exists:sub_categories,id']);
+    // public function educationalSubjects(Request $request): JsonResponse
+    // {
+    //     $request->validate(['sub_category_id' => 'required|exists:sub_categories,id']);
 
-        return $this->categoryRepository->educationalSubjects($request);
-    }
+    //     return $this->categoryRepository->educationalSubjects($request);
+    // }
 }
