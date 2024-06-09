@@ -12,6 +12,7 @@ use App\Models\Book;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class BookRepository implements BookRepositoryInterface
@@ -29,6 +30,7 @@ class BookRepository implements BookRepositoryInterface
 
     public function store(array $data): JsonResponse
     {
+        Log::info('store', $data);
         try {
             $data['owner_id'] = auth()->user()->id;
             $book = $this->model->create($data);
