@@ -1,11 +1,23 @@
 <?php
 
+use App\Http\Controllers\CrearePasswordController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Pusher\Pusher;
 
 Route::get('/', function () {
     return view('welcome');
+})->name('home');
+
+
+Route::get('create-password', function (Request $request) {
+    return view('create-password')->with([
+        'email' => $request->email,
+        'token' => $request->token,
+    ]);;
 });
+Route::post('create-password', [CrearePasswordController::class, "resetPassword"])->name('password.update');
+
 Route::get('/send-message', function () {
     $data = request()->all();
 

@@ -24,6 +24,7 @@ class CreatePasswordRequest extends FormRequest
         return [
             'token' => 'required',
             'password' => 'required|min:8|confirmed',
+            'email' => 'email|required|exists:users,email'
         ];
     }
 }
